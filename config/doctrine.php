@@ -12,6 +12,7 @@ return [
         'directory'     => null,
         'namespace'     => null
     ],
+    'filter' => null,
 
     // Available: null, apc, xcache, redis, memcache
     'cache_provider' => null,

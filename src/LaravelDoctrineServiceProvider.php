@@ -104,6 +104,13 @@ class LaravelDoctrineServiceProvider extends ServiceProvider
                 $config['simple_annotations']
             );
             $metadata->addFilter('trashed', TrashedFilter::class);
+
+            if (isset($config['filter'])) {
+                foreach ($config['filter'] as $filter)
+                    $metadata->addFilter($filter['name'], $filter['class']);
+            }
+
+
             $metadata->setAutoGenerateProxyClasses($config['proxy']['auto_generate']);
             $metadata->setDefaultRepositoryClassName($config['repository']);
             $metadata->setSQLLogger($config['logger']);
